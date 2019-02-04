@@ -1,4 +1,4 @@
-# psraytrace
+\# psraytrace
 Raytracing algorithm for one-way travel-time calculation in passive seismic or microseismic applications. Written in Python3. 
 * shooting() - the core function of raytracing algorithm, actually a 2d algorithm
 * psraytrace() - the core function to call shooting function and adapt it to 3D case. Unlike calculating two-way travel-time in reflection seismic raytracing program, only one-way travel-time for transmimitted P- or S-waves is calculated. You may modify this code to calculate the PS wave travel-time.
@@ -13,10 +13,10 @@ To run this program from source codes, you need to import the following dependen
 * Pandas
 
 By runing the main.py script, you would have the following images displayed.  
-[2D Example]: https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example2d.png  
-[3D Example]: https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example3d.png  
-2D raytracing example ![2D Example]
-3D raytracing example ![3D Example] 
+2D raytracing example  
+![2D Example](https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example2d.png)  
+3D raytracing example  
+![3D Example](https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example3d.png)  
 
 
 ## License
