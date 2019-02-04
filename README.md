@@ -13,12 +13,10 @@ To run this program from source codes, you need to import the following dependen
 * Pandas
 
 By runing the main.py script, you would have the following images displayed.
-
-2D raytracing example
-![2D Example] (https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example2d.png)
-
-2D raytracing example
-![3D Example] (https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example3d.png)
+[2D Example]:https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example2d.png
+[3D Example]:https://github.com/uqzzhao/psraytrace/blob/master/examples/images/example3d.png
+2D raytracing example![2D Example]
+3D raytracing example![3D Example] 
 
 
 ## License
