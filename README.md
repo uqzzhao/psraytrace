@@ -23,4 +23,4 @@ By runing the main.py script, you would have the following images displayed.
 MIT License.
 
 ## Authorship
-psraytrace was written in 2016. The sole contributor is [Zhengguang Zhao](https://www.researchgate.net/profile/Zhengguang_Zhao2), who now work for DeepListen on part-time basis.
+psraytrace was written in 2016. The sole contributor is [Zhengguang Zhao](https://www.researchgate.net/profile/Zhengguang_Zhao2), who now works for DeepListen on part-time basis.
