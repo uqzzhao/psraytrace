@@ -2,6 +2,12 @@
 
 """
 A 3D raytracing example typically seen in surface monitoring monitoring scenario.
+
+@author:     Zhengguang Zhao
+@copyright:  Copyright 2016-2019, Zhengguang Zhao.
+@license:    MIT
+@contact:    zg.zhao@outlook.com
+
 """
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D

@@ -2,6 +2,12 @@
 
 """
 A 2D raytracing example typically seen in downhole monitoring scenario.
+
+@author:     Zhengguang Zhao
+@copyright:  Copyright 2016-2019, Zhengguang Zhao.
+@license:    MIT
+@contact:    zg.zhao@outlook.com
+
 """
 import matplotlib.pyplot as plt
 import pandas as pd
