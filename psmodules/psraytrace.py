@@ -240,7 +240,11 @@ def raytrace(vp, vs, zlayer, dg, src, rcv):
             L = sqrt((sourcex[i] - receiverx[j]) * (sourcex[i] - receiverx[j]) + (sourcey[i] - receivery[j]) * (sourcey[i] - receivery[j]))
             X = sourcex[i] - receiverx[j]
             Y = sourcey[i] - receivery[j]
+
             
+            if L == 0.0:
+                L = 1
+
             if X <= 0:
                 dx = sourcex[i] + xh/L * abs(X)
             else:
@@ -265,6 +269,28 @@ def raytrace(vp, vs, zlayer, dg, src, rcv):
 
 
 def directshooting(vpp, vps, zn, xx, xs, xr, ops):
+    # Horizontal path
+    if xs < xr:
+        xh = np.array([xs[0], xr[0]])
+    else:
+        xh = np.array([xr[0], xs[0]])
+
+    zh = zn
+    vh = vpp
+    teta = np.array([0.0])
+    
+
+    if ops == 1:
+        pp = 1 / vpp
+        time = abs(np.diff(xh)) / vpp[0]
+    else:
+        pp = 1 / vps
+        time = abs(np.diff(xh)) / vps[0]
+
+    return xh, zh, vh, pp, teta, time[0]
+
+
+def verticalshooting(vpp, vps, zn, xx, xs, xr, ops):
     # Horizontal path
     if xs < xr:
         xh = np.array([xs[0], xr[0]])
