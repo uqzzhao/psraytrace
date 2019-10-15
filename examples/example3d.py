@@ -9,12 +9,16 @@ A 3D raytracing example typically seen in surface monitoring monitoring scenario
 @contact:    zg.zhao@outlook.com
 
 """
+import sys 
+sys.path.append(".") 
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import pandas as pd
 import numpy as np
 from copy import deepcopy
 from psmodules.psraytrace import raytrace
+import matplotlib.animation as animation
 
 def run():
 
@@ -53,16 +57,41 @@ def run():
     # Raytracing 
     dg = 10
     times, rays, _ = raytrace(vp, vs, vz, dg, src[:,2:], rcv[:,1:])
-    print(times)
+    
 
+    FLAG = 1 # 1= animated, 0= static
     # Display rays
-    for i in range(nsrc):
-        dx = deepcopy(rays[0, :])
-        dy = deepcopy(rays[1, :])
-        zh = deepcopy(rays[2, :])
+    if FLAG == 1:
+
+        # animation
+        ani, = ax.plot([],[],[],'k-', linewidth=0.5)
+        ni = len(rays[0, :])
         
-        ax.plot(dx, dy, zh,'k-', linewidth=0.5)
-        fig.canvas.draw()
+        def init():
+            ani.set_data([], [])
+            return ani,
+
+        def animate(i):
+            dx = rays[0, :i+2]
+            dy = rays[1, :i+2]
+            zh = rays[2, :i+2]
+            ani.set_data(dx, dy)
+            ani.set_3d_properties(zh)
+            return ani,
+
+        plot = animation.FuncAnimation(fig, animate, frames=ni-2, 
+                                    interval=10, blit=True, init_func = init)
+
+    else:
+        for i in range(nsrc):
+            dx = deepcopy(rays[0, :])
+            dy = deepcopy(rays[1, :])
+            zh = deepcopy(rays[2, :])
+            
+            ax.plot(dx, dy, zh,'k-', linewidth=0.5)
+            fig.canvas.draw()
         
    
     plt.show()
+
+    

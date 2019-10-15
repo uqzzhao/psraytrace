@@ -14,6 +14,7 @@ import pandas as pd
 import numpy as np
 from copy import deepcopy
 from psmodules.psraytrace import raytrace
+import matplotlib.animation as animation
 
 def run():
     
@@ -51,16 +52,33 @@ def run():
     # Raytracing 
     dg = 10
     times, rays, _ = raytrace(vp, vs, vz, dg, src[:,2:], rcv[:,1:])
-    print(times)
+    
+
+    FLAG = 1 # 1= animated, 0= static
 
     # Display rays
-    for i in range(nsrc):
-        dx = deepcopy(rays[0, :])
-        dy = deepcopy(rays[1, :])
-        zh = deepcopy(rays[2, :])
+    if FLAG == 1:
+        ani, = ax.plot([], [],'k-', linewidth=0.5)
+
+        ni = len(rays[1,:])
+        def animate(i):
+            dy = rays[1, :i+2]
+            zh = rays[2, :i+2]
+            ani.set_data(dy, zh)
+            return ani,
+
+        plot = animation.FuncAnimation(fig, animate, frames=ni-2, 
+                                    interval=100, blit=True)
+
+    else:
         
-        ax.plot(dy, zh,'k-', linewidth=0.5)
-        fig.canvas.draw()
+        for i in range(nsrc):
+            dx = deepcopy(rays[0, :])
+            dy = deepcopy(rays[1, :])
+            zh = deepcopy(rays[2, :])
+            
+            ax.plot(dy, zh,'k-', linewidth=0.5)
+            fig.canvas.draw()
         
    
     plt.show()
